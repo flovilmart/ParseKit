@@ -20,7 +20,7 @@ export XCODE_XCCONFIG_FILE=./Configurations/iOS-module.xcconfig
 xcodebuild clean -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR} | xcpretty
 
 xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR} | xcpretty
-xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' BUILD_DIR=${BUILD_DIR} | xcpretty
+xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' BUILD_DIR=${BUILD_DIR} | xcpretty
 
 rm -rf "${UNIVERSAL_LIBRARY_DIR}"
 

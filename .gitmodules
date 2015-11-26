@@ -7,3 +7,9 @@
 [submodule "ParseTwitterUtils-iOS"]
 	path = ParseTwitterUtils-iOS
 	url = https://github.com/ParsePlatform/ParseTwitterUtils-iOS.git
+[submodule "facebook-ios-sdk"]
+	path = facebook-ios-sdk
+	url = https://github.com/facebook/facebook-ios-sdk.git
+[submodule "ParseUI-iOS"]
+	path = ParseUI-iOS
+	url = https://github.com/ParsePlatform/ParseUI-iOS.git
