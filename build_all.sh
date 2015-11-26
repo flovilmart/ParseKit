@@ -8,10 +8,12 @@ git submodule update --init --recursive
 
 cd ./Parse-SDK-iOS-OSX
 # build Parse and Bolts
-rake package:frameworks
+bundle install
+bundle exec rake package:frameworks
 
 cd $DIR
 
+exit 0
 
 
 export XCODE_XCCONFIG_FILE=$(pwd)/Configurations/iOS-module.xcconfig

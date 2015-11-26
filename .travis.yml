@@ -1,8 +1,5 @@
 language: objective-c
 osx_image: xcode7.1
-branches:
-  only:
-  - master
 script:
 - "./build_all.sh"
 deploy:
