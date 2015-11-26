@@ -13,9 +13,6 @@ bundle exec rake package:frameworks
 
 cd $DIR
 
-exit 0
-
-
 export XCODE_XCCONFIG_FILE=$(pwd)/Configurations/iOS-module.xcconfig
 
 # build the Facebook iOS toolchain
