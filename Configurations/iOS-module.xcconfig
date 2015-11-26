@@ -1,0 +1,23 @@
+//
+//  Put this file alongside to the other both, as it contains what
+//  both have in common. Don't rename this file.
+//
+//  Copyright (c) 2014-2015 Marius Rackwitz. All rights reserved.
+//
+
+// Make it universal
+SUPPORTED_PLATFORMS                    = iphonesimulator iphoneos
+VALID_ARCHS[sdk=iphoneos*]             = arm64 armv7 armv7s
+VALID_ARCHS[sdk=iphonesimulator*]      = i386 x86_64
+
+// Dynamic linking uses different default copy paths
+LD_RUNPATH_SEARCH_PATHS[sdk=iphoneos*]         = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LD_RUNPATH_SEARCH_PATHS[sdk=iphonesimulator*]  = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+
+DYLIB_INSTALL_NAME_BASE						   = @rpath
+
+MACH_O_TYPE									   = mh_dylib		
+OTHER_LDFLAGS							   	   = $(inherited) '-dynamiclib' '-lsqlite3'
+CLANG_MODULES_AUTOLINK						   = YES
+IPHONEOS_DEPLOYMENT_TARGET 					   = 8.0
+ONLY_ACTIVE_ARCH							   = NO
