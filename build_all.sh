@@ -3,7 +3,7 @@
 set -x
 DIR=$(pwd)
 
-#git submodule update --init --recursive
+git submodule update --init --recursive
 
 
 cd ./Parse-SDK-iOS-OSX
