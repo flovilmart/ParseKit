@@ -39,10 +39,10 @@ cp -av Carthage/Build/iOS/* ParseFacebookUtils-iOS/Vendor/
 cp -av Carthage/Build/iOS/* ParseTwitterUtils-iOS/Vendor/
 unset XCCODE_XCCONFIG_FILE
 
-#sh Scripts/build_framework.sh ParseTwitterUtils-iOS ParseTwitterUtils ParseTwitterUtils-iOS ParseTwitterUtils
+sh Scripts/build_framework.sh ParseTwitterUtils-iOS ParseTwitterUtils ParseTwitterUtils-iOS ParseTwitterUtils
 cp -av ParseTwitterUtils-iOS/build/ios/ParseTwitterUtils.framework Carthage/Build/iOS/
 
-#sh Scripts/build_framework.sh ParseFacebookUtils-iOS ParseFacebookUtils ParseFacebookUtilsV4-iOS ParseFacebookUtilsV4
+sh Scripts/build_framework.sh ParseFacebookUtils-iOS ParseFacebookUtils ParseFacebookUtilsV4-iOS ParseFacebookUtilsV4
 cp -av ParseFacebookUtils-iOS/build/ios/ParseFacebookUtilsV4.framework Carthage/Build/iOS/
 
 zip -r build/ParseToolchain.framework.zip ./Carthage/
