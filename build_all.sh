@@ -1,6 +1,5 @@
 #!/bin/sh
-#set -e
-set -x
+
 DIR=$(pwd)
 
 git submodule update --init --recursive
@@ -40,10 +39,10 @@ cp -av Carthage/Build/iOS/* ParseFacebookUtils-iOS/Vendor/
 cp -av Carthage/Build/iOS/* ParseTwitterUtils-iOS/Vendor/
 unset XCCODE_XCCONFIG_FILE
 
-sh Scripts/build_framework.sh ParseTwitterUtils-iOS ParseTwitterUtils ParseTwitterUtils-iOS ParseTwitterUtils
-cp -av build/ios/ParseTwitterUtils.framework Carthage/Build/iOS/
+#sh Scripts/build_framework.sh ParseTwitterUtils-iOS ParseTwitterUtils ParseTwitterUtils-iOS ParseTwitterUtils
+cp -av ParseTwitterUtils-iOS/build/ios/ParseTwitterUtils.framework Carthage/Build/iOS/
 
-sh Scripts/build_framework.sh ParseFacebookUtils-iOS ParseFacebookUtils ParseFacebookUtilsV4-iOS ParseFacebookUtilsV4
-cp -av build/ios/ParseFacebookUtilsV4.framework Carthage/Build/iOS/
+#sh Scripts/build_framework.sh ParseFacebookUtils-iOS ParseFacebookUtils ParseFacebookUtilsV4-iOS ParseFacebookUtilsV4
+cp -av ParseFacebookUtils-iOS/build/ios/ParseFacebookUtilsV4.framework Carthage/Build/iOS/
 
-zip build/ParseToolchain.framework.zip ./Carthage/*
+zip -r build/ParseToolchain.framework.zip ./Carthage/
