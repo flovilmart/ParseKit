@@ -4,7 +4,7 @@ The Parse Toolchain, Carthage and frameworks compatible
 ### Installation
 In your Cartfile, add:
 
-`github "flovilmart/ParseToolchain"`
+`github "flovilmart/ParseKit"`
 
 ### Versions
 
