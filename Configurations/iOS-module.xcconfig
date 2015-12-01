@@ -1,47 +1,41 @@
-//
-//  Put this file alongside to the other both, as it contains what
-//  both have in common. Don't rename this file.
-//
-//  Copyright (c) 2014-2015 Marius Rackwitz. All rights reserved.
-//
+DEFINES_MODULE[sdk=iphoneos*]              = YES
+DEFINES_MODULE[sdk=iphonesimulator*]              = YES
+
+IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]   = 8.0
+IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*]   = 8.0
+
+ARCHS[sdk=iphoneos*]                       = arm64 armv7 armv7s
+ARCHS[sdk=iphonesimulator*]                       = i386 x86_64
+
+DYLIB_INSTALL_NAME_BASE[sdk=iphoneos*]        = @rpath
+DYLIB_INSTALL_NAME_BASE[sdk=iphonesimulator*]  = @rpath
+
+LD_RUNPATH_SEARCH_PATHS[sdk=iphoneos*]            = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LD_RUNPATH_SEARCH_PATHS[sdk=iphonesimulator*]     = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+
+MACH_O_TYPE[sdk=iphoneos*]                         = mh_dylib
+MACH_O_TYPE[sdk=iphonesimulator*]                  = mh_dylib
+
+SUPPORTED_PLATFORMS[sdk=iphoneos*]              		= iphonesimulator iphoneos
+SUPPORTED_PLATFORMS[sdk=iphonesimulator*]       		= iphonesimulator iphoneos
+
+OTHER_LDFLAGS[sdk=iphoneos*] 							  = $(inherited) -dynamiclib -lsqlite3 -weak_framework UIKit -weak_framework CoreGraphics -weak_framework SystemConfiguration -weak_framework AudioToolbox
+
+OTHER_LDFLAGS[sdk=iphonesimulator*]							  = $(inherited) -dynamiclib -lsqlite3 -weak_framework UIKit -weak_framework CoreGraphics -weak_framework SystemConfiguration -weak_framework AudioToolbox
+
+ONLY_ACTIVE_ARCH[sdk=iphoneos*]       						= NO
+ONLY_ACTIVE_ARCH[sdk=iphonesimulator*]						= NO
 
 
-// Make it universal
-SUPPORTED_PLATFORMS[sdk=iphoneos*]        					   = iphonesimulator iphoneos
-ARCHS[sdk=iphoneos*]  										   = arm64 armv7 armv7s i386 x86_64
-VALID_ARCHS[sdk=iphoneos*]             						   = arm64 armv7 armv7s
 
+CLANG_MODULES_AUTOLINK[sdk=iphoneos*]                       = YES
+CLANG_MODULES_AUTOLINK[sdk=iphonesimulator*]                = YES
 
-// Dynamic linking uses different default copy paths
-LD_RUNPATH_SEARCH_PATHS[sdk=iphoneos*]          			   = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+ENABLE_BITCODE[sdk=iphoneos*]         = YES
+ENABLE_BITCODE[sdk=iphonesimulator*]  = YES
 
-DYLIB_INSTALL_NAME_BASE[sdk=iphoneos*] 						   = @rpath
+VALID_ARCHS[sdk=iphonesimulator*]     = i386 x86_64
+VALID_ARCHS[sdk=iphoneos*]            = arm64 armv7 armv7s
+GCC_TREAT_WARNINGS_AS_ERRORS          = NO
 
-MACH_O_TYPE[sdk=iphoneos*] 									   = mh_dylib		
-OTHER_LDFLAGS[sdk=iphoneos*] 							   	   = $(inherited) -dynamiclib -lsqlite3 -weak_framework UIKit -weak_framework CoreGraphics
-CLANG_MODULES_AUTOLINK[sdk=iphoneos*] 					       = YES
-IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*] 				   	   = 8.0
-ONLY_ACTIVE_ARCH[sdk=iphoneos*] 							   = NO
-ENABLE_BITCODE[sdk=iphoneos*]								   = YES
-CODE_SIGN_IDENTITY = 
-
-
-ARCHS[sdk=iphonesimulator*]  								   = arm64 armv7 armv7s i386 x86_64
-VALID_ARCHS[sdk=iphonesimulator*]             				   = i386 x86_64
-
-
-// Dynamic linking uses different default copy paths
-LD_RUNPATH_SEARCH_PATHS[sdk=iphonesimulator*]          		   = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-
-DYLIB_INSTALL_NAME_BASE[sdk=iphonesimulator*] 				   = @rpath
-
-MACH_O_TYPE[sdk=iphonesimulator*] 							   = mh_dylib		
-OTHER_LDFLAGS[sdk=iphonesimulator*] 						   = $(inherited) -dynamiclib -lsqlite3 -weak_framework UIKit -weak_framework CoreGraphics
-CLANG_MODULES_AUTOLINK[sdk=iphonesimulator*] 				   = YES
-IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*] 			   = 8.0
-ONLY_ACTIVE_ARCH[sdk=iphonesimulator*] 						   = NO
-ENABLE_BITCODE[sdk=iphonesimulator*]						   = YES
-
-CODE_SIGN_IDENTITY = 
-
-GCC_TREAT_WARNINGS_AS_ERRORS = 										NO
+CODE_SIGN_IDENTITY          =
