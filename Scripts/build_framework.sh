@@ -17,10 +17,10 @@ FRAMEWORK="${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework"
 export XCODE_XCCONFIG_FILE=./Configurations/iOS-module.xcconfig
 
 
-xcodebuild clean -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR} | xcpretty
+xctool clean -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR}
 
-xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR} | xcpretty
-xcodebuild -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' BUILD_DIR=${BUILD_DIR} | xcpretty
+xctool build -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} BUILD_DIR=${BUILD_DIR}
+xctool build -workspace ${WORKSPACE} -scheme ${SCHEME} -configuration ${CONFIGURATION} -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' BUILD_DIR=${BUILD_DIR}
 
 rm -rf "${UNIVERSAL_LIBRARY_DIR}"
 
@@ -41,6 +41,6 @@ if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; then
        cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* "${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/" | echo
 fi
 
-echo "${FRAMEWORK_NAME}.framework is in ./build/ios"
+echo "${FRAMEWORK_NAME}.framework is in ${BUILD_DIR}/ios"
 
 cd $PWD

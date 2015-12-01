@@ -54,6 +54,5 @@ sh Scripts/build_framework.sh ParseFacebookUtils-iOS ParseFacebookUtils ParseFac
 cp -R ParseFacebookUtils-iOS/build/ios/ParseFacebookUtilsV4.framework Carthage/Build/iOS/
 echo "travis_fold:end:ParseFacebookUtils-iOS\r"
 
-mkdir -p build
-zip -r build/ParseKit.framework.zip Carthage
+zip -r ParseKit.framework.zip Carthage
 
