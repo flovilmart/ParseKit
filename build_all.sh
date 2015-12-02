@@ -32,10 +32,23 @@ facebook-ios-sdk/scripts/build_framework.sh -n -c Release
 unset XCCODE_XCCONFIG_FILE
 echo "travis_fold:end:Facebook-SDK-iOS\r"
 # copy the FBSDK frameworks
+
+FB_SDK_CORE_KIT_VERSION=$(cat facebook-ios-sdk/FBSDKCoreKit.podspec | grep s.version | sed s/^.*=\ //g | sed s/\"//g)
+FB_SDK_SHARE_KIT_VERSION=$(cat facebook-ios-sdk/FBSDKShareKit.podspec | grep s.version | sed s/^.*=\ //g | sed s/\"//g)
+FB_SDK_LOGIN_KIT_VERSION=$(cat facebook-ios-sdk/FBSDKLoginKit.podspec | grep s.version | sed s/^.*=\ //g | sed s/\"//g)
+
 cp -R facebook-ios-sdk/build/FBSDKLoginKit.framework \
 	facebook-ios-sdk/build/FBSDKCoreKit.framework \
 	facebook-ios-sdk/build/FBSDKShareKit.framework \
 	Carthage/Build/iOS/
+
+function setVersion() {
+	/usr/libexec/PlistBuddy -c "Set:CFBundleVersion $1" $2
+	/usr/libexec/PlistBuddy -c "Set:CFBundleShortVersionString $1" $2
+}
+setVersion $FB_SDK_CORE_KIT_VERSION Carthage/Build/iOS/FBSDKCoreKit.framework/Info.plist
+setVersion $FB_SDK_SHARE_KIT_VERSION Carthage/Build/iOS/FBSDKLoginKit.framework/Info.plist
+setVersion $FB_SDK_LOGIN_KIT_VERSION Carthage/Build/iOS/FBSDKShareKit.framework/Info.plist
 
 # # Cleanup the vendor
 rm -rf ParseFacebookUtils-iOS/Vendor/*.framework
