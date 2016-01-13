@@ -1,6 +1,3 @@
-[submodule "Parse-SDK-iOS-OSX"]
-	path = Parse-SDK-iOS-OSX
-	url = https://github.com/flovilmart/Parse-SDK-iOS-OSX.git
 [submodule "ParseFacebookUtils-iOS"]
 	path = ParseFacebookUtils-iOS
 	url = https://github.com/ParsePlatform/ParseFacebookUtils-iOS.git
