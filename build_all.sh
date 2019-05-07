@@ -11,20 +11,6 @@ mkdir -p ${CARTHAGE_IOS}
 # cleanup the directory
 rm -rf ${CARTHAGE_IOS}/*
 
-echo "travis_fold:start:Parse-SDK-iOS-OSX\r"
-
-cd ./Parse-SDK-iOS-OSX
-# build Parse and Bolts
-bundle install
-bundle exec rake package:framework:ios_dynamic
-
-cd $DIR
-
-# # # Copy the Parse SDK + Bolts
-unzip Parse-SDK-iOS-OSX/build/release/Parse-iOS-Dynamic.zip -d ${CARTHAGE_IOS}
-
-echo "travis_fold:end:Parse-SDK-iOS-OSX\r"
-
 echo "travis_fold:start:Facebook-SDK-iOS\r"
 
 export XCODE_XCCONFIG_FILE=$(pwd)/Configurations/iOS-module.xcconfig
